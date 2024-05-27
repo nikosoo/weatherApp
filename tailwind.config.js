@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "custom-image": "url('./public/pexels-ming-sun-270578-814449.jpg')",
+        "custom-image": "url('')",
       },
     },
   },
