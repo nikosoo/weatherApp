@@ -81,25 +81,26 @@ const Weather = () => {
 
       {loading && <p className="text-center my-4">Loading...</p>}
       <div className="flex flex-col items-start mt-8">
-        <div className="flex w-full justify-between">
+        <div className="flex flex-col md:flex-row w-full justify-between">
           {weatherData && (
             <>
-              <div className="flex gap-20 w-full">
+              <div className="flex flex-col md:flex-row gap-4 w-full">
                 <img
                   src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png`}
                   alt={weatherData.weather[0].description}
+                  className="self-center"
                 />
 
                 <div className="flex flex-col mt-6">
-                  <h2 className="text-5xl font-bold text-gray-100 ">
+                  <h2 className="text-3xl md:text-5xl font-bold text-gray-100 ">
                     Weather in {weatherData.name}
                   </h2>
-                  <div className="flex gap-40">
-                    <p className="text-4xl mt-7 text-gray-100">
+                  <div className="flex gap-4 md:gap-40">
+                    <p className="text-2xl md:text-4xl mt-2 md:mt-7 text-gray-100">
                       {weatherData.main.temp}°C
                     </p>
                   </div>
-                  <p className="text-4xl text-gray-100">
+                  <p className="text-2xl md:text-4xl text-gray-100">
                     {weatherData.weather[0].description
                       .charAt(0)
                       .toUpperCase() +
@@ -107,7 +108,7 @@ const Weather = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-gray-700 bg-opacity-50 p-6 rounded-md shadow-md my-6 w-72 text-xl text-gray-100">
+              <div className="bg-gray-700 bg-opacity-50 p-6 rounded-md shadow-md my-6 w-full md:w-72 text-xl text-gray-100">
                 <p>Humidity: {weatherData.main.humidity}%</p>
                 <p>Wind Speed: {weatherData.wind.speed} m/s</p>
                 <p>Pressure: {weatherData.main.pressure} hPa</p>
@@ -128,8 +129,8 @@ const Weather = () => {
 
         {weatherData && (
           <>
-            <div className="container mx-auto p-6 bg-gray-800 shadow-lg bg-opacity-70 mt-40 rounded-lg">
-              <div className="flex gap-4">
+            <div className="container mx-auto p-6 bg-gray-800 shadow-lg bg-opacity-70 mt-20 md:mt-40 rounded-lg">
+              <div className="flex gap-4 justify-center md:justify-start">
                 <button
                   className="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
                   onClick={hourHandler}
@@ -148,15 +149,15 @@ const Weather = () => {
                 <div>
                   {forecastData && forecastData.length > 0 && (
                     <div className="w-full mt-4">
-                      <h2 className="text-xl font-bold mb-4 text-gray-100">
+                      <h2 className="text-xl font-bold mb-4 text-gray-100 text-center md:text-left">
                         Hourly Forecast for Today
                       </h2>
-                      <div className="flex flex-wrap gap-8">
+                      <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                         {forecastData[0].hourlyForecasts.map(
                           (hourlyForecast, index) => (
                             <div
                               key={index}
-                              className="bg-gray-800 p-4 rounded-lg shadow-md w-56 flex flex-col items-center"
+                              className="bg-gray-800 p-4 rounded-lg shadow-md w-40 md:w-56 flex flex-col items-center"
                             >
                               <p className="text-gray-200">
                                 {new Date(
@@ -199,14 +200,14 @@ const Weather = () => {
 
               {!changeForecast && forecastData && (
                 <div className="w-full mt-4">
-                  <h2 className="text-xl font-bold mb-4 text-gray-100">
+                  <h2 className="text-xl font-bold mb-4 text-gray-100 text-center md:text-left">
                     5-Day Forecast
                   </h2>
-                  <div className="flex flex-wrap gap-8">
+                  <div className="flex flex-wrap gap-4 justify-center md:justify-start">
                     {forecastData.slice(1).map((forecast, index) => (
                       <div
                         key={index}
-                        className="bg-gray-800 p-4 rounded-lg shadow-md w-56 flex flex-col items-center"
+                        className="bg-gray-800 p-4 rounded-lg shadow-md w-40 md:w-56 flex flex-col items-center"
                       >
                         <p className="font-bold text-gray-200">
                           {forecast.date}
