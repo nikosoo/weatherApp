@@ -79,7 +79,7 @@ const Weather = () => {
     <div className="container mx-auto p-4">
       <SearchBar onSearch={fetchWeatherData} />
 
-      {loading && <p className="text-center my-4">Loading...</p>}
+      {loading && <p className="text-center my-4">Loading...test</p>}
       <div className="flex flex-col items-start mt-8">
         <div className="flex flex-col md:flex-row w-full justify-between">
           {weatherData && (
